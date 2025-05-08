@@ -1,5 +1,5 @@
 package model.user;
 
-public class Individual extends User{
+public class Individual extends Customer{
 
 }
