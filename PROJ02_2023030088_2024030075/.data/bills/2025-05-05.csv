@@ -1,0 +1,4 @@
+type:Bill,paymentCode:RF10203045,billNumber:VF20250415001,issuer:090800700,customer:067688302,amount:45.5,issueDate:2025-05-05,dueDate:2025-05-25
+type:Bill,paymentCode:RF10203046,billNumber:VF20250415002,issuer:090800700,customer:067688303,amount:45.5,issueDate:2025-05-05,dueDate:2025-05-25
+type:Bill,paymentCode:RF10203047,billNumber:VF20250415003,issuer:090800700,customer:067688304,amount:35.6,issueDate:2025-05-05,dueDate:2025-05-25
+type:Bill,paymentCode:RF10203048,billNumber:VF20250415004,issuer:090800700,customer:067688307,amount:35,issueDate:2025-05-05,dueDate:2025-05-25

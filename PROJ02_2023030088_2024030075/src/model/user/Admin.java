@@ -10,8 +10,7 @@ import model.transactions.Transaction;
 	    public Admin(String legalName, String userName, String password) {
 	        super(legalName, userName, password);
 	    }
-
-	    @Override
+ 
 	    public boolean viewCustomerDetails() {
 	        return true;
 	    }
@@ -19,7 +18,6 @@ import model.transactions.Transaction;
 	    /**
 	     * Admins can view all account details
 	     */
-	    @Override
 	    public boolean viewAccountDetails() {
 	        return true;
 	    }
@@ -27,7 +25,6 @@ import model.transactions.Transaction;
 	    /**
 	     * Admins can view all transactions
 	     */
-	    @Override
 	    public boolean viewTransactions() {
 	        return true;
 	    }
@@ -35,7 +32,6 @@ import model.transactions.Transaction;
 	    /**
 	     * Admins can perform administrative actions
 	     */
-	    @Override
 	    public boolean isAdmin() {
 	        return true;
 	    }
@@ -43,7 +39,6 @@ import model.transactions.Transaction;
 	    /**
 	     * Admins don't have personal bank accounts
 	     */
-	    @Override
 	    public boolean hasBankAccount() {
 	        return false;
 	    }
@@ -57,11 +52,6 @@ import model.transactions.Transaction;
 	        return Objects.equals(department, admin.employeeId) && 
 	               Objects.equals(department, admin.department);
 	    }*/
-
-	    @Override
-	    public int hashCode() {
-	        return Objects.hash(super.hashCode());
-	    }
 
 	    /**@Override
 	    public String toString() {
@@ -77,17 +67,17 @@ import model.transactions.Transaction;
 	     * Marshals the Admin object to a string for storage
 	     * @return A string representation of the Admin
 	     */
-	    /**@Override
-	    public String marshall() {
+	    @Override
+	    public String marshal() {
 	        return String.join(",",
 	                getUsername(),
 	                getPassword(), // Note: password should already be hashed
-	                getEmail(),
 	                employeeId,
 	                department,
 	                getType().name()
 	        );
-	    }*/
+	    }
+	}
 
 	    /**
 	     * Unmarshals a string to populate the Admin object
