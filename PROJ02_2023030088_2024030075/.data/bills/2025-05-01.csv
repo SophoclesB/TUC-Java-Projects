@@ -1,0 +1,5 @@
+type:Bill,paymentCode:RF10203040,billNumber:CO20250501001,issuer:090800800,customer:067688302,amount:29.46,issueDate:2025-05-01,dueDate:2025-05-21
+type:Bill,paymentCode:RF10203041,billNumber:CO20250501002,issuer:090800800,customer:067688303,amount:37.45,issueDate:2025-05-01,dueDate:2025-05-21
+type:Bill,paymentCode:RF10203042,billNumber:CO20250501003,issuer:090800800,customer:067688304,amount:52,issueDate:2025-05-01,dueDate:2025-05-21
+type:Bill,paymentCode:RF10203043,billNumber:CO20250501004,issuer:090800800,customer:067688307,amount:35.99,issueDate:2025-05-01,dueDate:2025-05-21
+type:Bill,paymentCode:RF10203044,billNumber:CO20250501005,issuer:090800800,customer:067688306,amount:42.11,issueDate:2025-05-01,dueDate:2025-05-21

@@ -1,0 +1,11 @@
+type:Admin,legalName:Bank Administrator,userName:admin,password:123456
+type:Individual,legalName:Nektarios Gioldasis,userName:ngioldasis,password:123456,vatNumber:067688302
+type:Individual,legalName:Ioannis Maragkoudakis,userName:imaragkoudakis,password:123456,vatNumber:067688303
+type:Individual,legalName:Nikos Giatrakos,userName:ngiatrakos,password:123456,vatNumber:067688304
+type:Individual,legalName:Maria Maragkoudaki,userName:mmaragkoudaki,password:123456,vatNumber:067688305
+type:Individual,legalName:Sofia Karakosta,userName:skarakosta,password:123456,vatNumber:067688306
+type:Individual,legalName:Eleni Dimitriou,userName:edimitriou,password:123456,vatNumber:067688307
+type:Company,legalName:Vodafone Gr,userName:vodafone,password:123456,vatNumber:090800700
+type:Company,legalName:Cosmote,userName:cosmote,password:123456,vatNumber:090800800
+type:Company,legalName:DEI Co,userName:dei,password:123456,vatNumber:090800900
+type:Company,legalName:NOVA,userName:nova,password:123456,vatNumber:090800600
