@@ -1,6 +1,8 @@
 package model.user;
 
-public abstract class User {
+import storage.Storable;
+
+public abstract class User implements Storable{
 	private String type;
 	private String legalName;
 	private String userName;

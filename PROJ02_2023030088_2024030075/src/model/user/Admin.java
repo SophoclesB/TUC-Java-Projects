@@ -67,17 +67,17 @@ import model.transactions.Transaction;
 	     * Marshals the Admin object to a string for storage
 	     * @return A string representation of the Admin
 	     */
-	    /**@Override
-	    public String marshall() {
+	    @Override
+	    public String marshal() {
 	        return String.join(",",
 	                getUsername(),
 	                getPassword(), // Note: password should already be hashed
-	                getEmail(),
 	                employeeId,
 	                department,
 	                getType().name()
 	        );
-	    }*/
+	    }
+	}
 
 	    /**
 	     * Unmarshals a string to populate the Admin object
