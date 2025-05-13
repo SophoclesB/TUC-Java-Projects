@@ -10,6 +10,10 @@ import model.transactions.Transaction;
 	    public Admin(String legalName, String userName, String password) {
 	        super(legalName, userName, password);
 	    }
+
+		public String getType(){
+			return "Admin";
+		}
  
 	    public boolean viewCustomerDetails() {
 	        return true;
@@ -70,30 +74,23 @@ import model.transactions.Transaction;
 	    @Override
 	    public String marshal() {
 	        return String.join(",",
-	                getUsername(),
-	                getPassword(), // Note: password should already be hashed
-	                employeeId,
-	                department,
-	                getType().name()
+					getType(),
+	                getUserName(),
+	                getPassword()
 	        );
 	    }
-	}
 
 	    /**
 	     * Unmarshals a string to populate the Admin object
 	     * @param data The string data to unmarshall
 	     */
-	    /**@Override
-	    public void unmarshall(String data) {
+	    @Override
+	    public void unmarshal(String data) {
 	        String[] parts = data.split(",");
 	        if (parts.length >= 6) {
-	            setUsername(parts[0]);
-	            setPassword(parts[1]); // Already hashed
-	            setEmail(parts[2]);
-	            this.employeeId = parts[3];
-	            this.department = parts[4];
+	            setUserName(parts[0]);
 	            // UserType is already set by constructor
 	        }
 	    }
-	}*/
+	}
 

@@ -1,5 +1,7 @@
 package model.user;
 
+import java.util.ArrayList;
+import java.util.List;
 import storage.Storable;
 
 public abstract class User implements Storable{
@@ -7,48 +9,49 @@ public abstract class User implements Storable{
 	private String legalName;
 	private String userName;
 	private String password;
+	private String vatNumber;
 	
-	protected User(String type, String legalName, String userName) {
-		if(type == "null")
-			throw new IllegalArgumentException("Type cannot be null!");
-		setType(type);
+	protected User(String legalName, String userName, String password) {
 		setLegalName(legalName);
 		setUserName(userName);
+		setPassword(password);
 	}
 	
-	private String getType() {
+
+	// ABSTRACT METHODS THAT SUBCLASSES IMPLEMENT
+	public abstract String marshal();
+	public abstract void unmarshal(String data);
+
+	// USER PARENT CLASS METHODS
+	protected String getType(){
 		return type;
 	}
-	
-	private void setType(String type) {
-		this.type = type;
-	}
-	
-	private String getLegalName() {
+
+	protected String getLegalName() {
 		return legalName;
 	}
 	
-	private void setLegalName(String legalName) {
+	protected void setLegalName(String legalName) {
 		this.legalName = legalName;
 	}
 	
-	private String getUserName() {
+	protected String getUserName() {
 		return userName;
 	}
 	
-	private void setUserName(String userName) {
+	protected void setUserName(String userName) {
 		this.userName = userName;
 	}
 	
-	private String getPassword() {
-		return password;
-	}
-	
-	private void setPassword(String password) {
+	protected void setPassword(String password) {
 		if (password != null && password.matches("^[0-9]{6,6}$"))
 			this.password = password;
 		else
 			throw new IllegalArgumentException("ERROR: Invalid password, please give another.");
+	}
+
+	protected String getPassword() {
+		return password;
 	}
 
 	
