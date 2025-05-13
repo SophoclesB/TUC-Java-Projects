@@ -1,7 +1,5 @@
 package model.user;
 
-import java.util.ArrayList;
-import java.util.List;
 import storage.Storable;
 
 public abstract class User implements Storable{
@@ -21,12 +19,10 @@ public abstract class User implements Storable{
 	// ABSTRACT METHODS THAT SUBCLASSES IMPLEMENT
 	public abstract String marshal();
 	public abstract void unmarshal(String data);
+	protected abstract String getType();
 
+	
 	// USER PARENT CLASS METHODS
-	protected String getType(){
-		return type;
-	}
-
 	protected String getLegalName() {
 		return legalName;
 	}

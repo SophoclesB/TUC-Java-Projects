@@ -7,4 +7,9 @@ import model.orders.StandingOrder;
 public class Individual extends Customer{
     private List<PersonalAccount> accounts;
     private List<StandingOrder> standingOrders;
+
+
+    protected String getType(){
+        return "Individual";
+    }
 }
