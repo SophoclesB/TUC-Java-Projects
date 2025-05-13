@@ -1,5 +1,10 @@
 package model.user;
 
-public class Company extends Customer {
+import java.util.List;
+import model.bills.Bill;
+import model.accounts.BusinessAccount;
 
+public class Company extends Customer {
+    private BusinessAccount businessAccount;
+    private List<Bill> issuedBills;
 }
