@@ -1,5 +1,7 @@
 package model.accounts;
 
-public class PersonalAccount {
+import java.util.List;
 
+public class PersonalAccount extends BankAccount {
+    private List<String> coOwner;
 }

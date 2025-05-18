@@ -33,4 +33,6 @@ public abstract class Customer extends User{
 	public String getVAT(){
 		return vatNumber;
 	}
+
+	public abstract String getType();
 }

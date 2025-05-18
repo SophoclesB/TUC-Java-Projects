@@ -8,8 +8,12 @@ public class Individual extends Customer{
     private List<PersonalAccount> accounts;
     private List<StandingOrder> standingOrders;
 
+    public Individual(String legalName, String userName, String password){
+        super(legalName, userName, password);
+    }
 
-    protected String getType(){
+    @Override
+    public String getType(){
         return "Individual";
     }
 }
