@@ -12,14 +12,14 @@ import storage.CSVManager;
 import storage.StorageManager;
 
 public class UserManager {
-    private User sampleUser;
+    public User sampleUser;
     public Set<User> userList;
     private CSVManager csvManager;
 
     public UserManager(){
         this.csvManager = new CSVManager();
-        sampleUser = csvManager.createUserFromCSV("data/users/users.csv");
-        csvManager.load(sampleUser, "data/users/users.csv");
+        sampleUser = csvManager.createUserFromCSV("D:\\ECE\\TUC-Java-Projects\\PROJ02_2023030088_2024030075\\src\\data\\users\\users.csv");
+        csvManager.load(sampleUser, "D:\\ECE\\TUC-Java-Projects\\PROJ02_2023030088_2024030075\\src\\data\\users\\users.csv");
     }
 
     
