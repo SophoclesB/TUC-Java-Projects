@@ -5,15 +5,19 @@ import java.util.Iterator;
 import java.util.List;
 
 import model.user.Customer;
+import model.user.Individual;
 
 public class PersonalAccount extends BankAccount {
-    private List<String> coOwner;
+    private List<String> coOwners;
+    private List<Individual> coOwnerObjects;
     private int coOwnerCount;
 
     public PersonalAccount(Customer owner){
         super(owner);
-        coOwner = new ArrayList<>();
+        coOwners = new ArrayList<>();
+        coOwnerObjects = new ArrayList<>();
         this.coOwnerCount = 0;
+        recentPersonal = this;
     }
 
     @Override
@@ -44,7 +48,7 @@ public class PersonalAccount extends BankAccount {
 					case "dateCreated": this.dateCreated = value; break;
 					case "rate": this.rate = Double.valueOf(value); break;
                     case "balance": this.balance = Double.valueOf(value); break;
-                    case "coOwner": this.coOwner.add(value); break;
+                    case "coOwner": this.coOwners.add(value); break;
                 }
             }     	
     }
@@ -59,7 +63,7 @@ public class PersonalAccount extends BankAccount {
     }
 
     public List<String> getCoOwner() {
-        return coOwner;
+        return coOwners;
     }
 
     public int getCoOwnerCount() {

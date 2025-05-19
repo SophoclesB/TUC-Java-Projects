@@ -22,7 +22,7 @@ public abstract class Customer extends User{
 		StringBuffer sb = new StringBuffer();
 		if(this instanceof Individual){
 			sb.append("067");
-			sb.append(latestIndividualVat++);
+			sb.append(++latestIndividualVat);
 		}
 		else {
 			sb.append("090");

@@ -11,7 +11,7 @@ import model.transactions.Transaction;
 	        super(legalName, userName, password);
 	    }
 
-		public Admin() {}
+		public Admin() {super();}
 
 		public String getType(){
 			return "Admin";

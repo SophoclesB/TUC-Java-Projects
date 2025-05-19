@@ -2,11 +2,15 @@ package model.accounts;
 
 import model.user.Customer;
 public class BusinessAccount extends BankAccount {
-    int maintenanceFee;
+    float maintenanceFee;
 
     public BusinessAccount(Customer owner){
         super(owner);
+        this.maintenanceFee = 0.00f;
+        recentBusiness = this;
     }
+
+    public BusinessAccount() {super();}
 
     @Override
     public String marshal() {
@@ -41,7 +45,7 @@ public class BusinessAccount extends BankAccount {
             }     	
     }
 
-    public int getMaintenanceFee() {
+    public float getMaintenanceFee() {
         return maintenanceFee;
     }
 

@@ -15,11 +15,11 @@ public abstract class User implements Storable{
 		setPassword(password);
 	}
 
-	protected User(){}
+	protected User(){} // EMPTY CONSTRUCTOR FOR CREATING NULL VALUE OBJECT
 	
 	/**
-	     * Marshals the Admin object to a string for storage
-	     * @return A string representation of the Admin
+	     * Επιστρέφει ένα string με τα δεδομένα μας στην μορφή που θέλουμε για το CSV
+		 * για αποθήκευση.
 	     */
 	    public String marshal() {
 	        return String.join(",",

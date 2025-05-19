@@ -1,11 +1,13 @@
 package model.accounts;
 
+import java.time.LocalDate;
+
 import model.user.Customer;
 import storage.Storable;
 
 public abstract class BankAccount implements Storable {
     protected String type;
-    protected String iban;
+    protected String iban = "GR000202505000000000";
     protected String primaryOwner;
     protected Customer primaryOwnerObject;
     protected String dateCreated;
@@ -14,12 +16,18 @@ public abstract class BankAccount implements Storable {
     protected int fee;
 
     protected static final String COUNTRY_CODE = "GR";
+    protected static BusinessAccount recentBusiness;
+    protected static PersonalAccount recentPersonal;
 
     public BankAccount(Customer owner){
         this.primaryOwnerObject = owner;
         this.primaryOwner = owner.getVAT();
-
+        this.balance = 0.00f;
+        this.rate = 0.00f;
+        this.iban = generateIban(owner);
     }
+
+    public BankAccount() {}
 
     public String marshal() {
 	        return String.join(",",
@@ -62,14 +70,30 @@ public abstract class BankAccount implements Storable {
         return iban;
     }
 
-    public String generateIban() {
+    public String generateIban(Customer owner) {
         StringBuffer sb = new StringBuffer();
         sb.append(COUNTRY_CODE);
-        if(this.primaryOwnerObject.getType().equals("Individual"))
+        if(owner.getType().equals("Individual"))
             sb.append("100");
         else
             sb.append("200");
+        
+        sb.append(2025+nextIban(owner.getType()));
         return sb.toString();
+    }
+
+    private String nextIban(String ownerType){
+        String nextIban;
+        String latestIban;
+        if(ownerType == "Individual")
+            latestIban = recentPersonal.getIban();
+        else
+            latestIban = recentPersonal.getIban();
+
+        String[] split = latestIban.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+        int next = Integer.valueOf(split[1]) + 1; 
+        nextIban = split[0] + String.valueOf(next);
+        return nextIban;
     }
 
     public String getPrimaryOwner() {
