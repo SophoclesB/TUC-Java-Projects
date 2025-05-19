@@ -4,13 +4,14 @@ import model.user.Customer;
 import storage.Storable;
 
 public abstract class BankAccount implements Storable {
-    private String type;
-    private String iban;
-    private String primaryOwner;
-    private Customer primaryOwnerObject;
-    private String dateCreated;
-    private double rate;
-    private double balance;
+    protected String type;
+    protected String iban;
+    protected String primaryOwner;
+    protected Customer primaryOwnerObject;
+    protected String dateCreated;
+    protected double rate;
+    protected double balance;
+    protected int fee;
 
     protected static final String COUNTRY_CODE = "GR";
 
@@ -18,6 +19,35 @@ public abstract class BankAccount implements Storable {
         this.primaryOwnerObject = owner;
         this.primaryOwner = owner.getVAT();
 
+    }
+
+    public String marshal() {
+	        return String.join(",",
+					"type:" + getType(),
+	                "iban:" + getIban(),
+					"primaryOwner:" + getPrimaryOwner(),
+	                "dateCreated:" + getDateCreated(),
+                    "rate" + getRate(),
+                    "balance" + getBalance()
+	        );
+	    }
+
+    public void unmarshal(String data){
+        String[] parts = data.split(".");
+        for (String pair : parts){
+            String[] kv = pair.split(":");
+				String key = kv[0];
+				String value = kv[1];
+
+                switch(key) {
+					case "type": this.type = value; break;
+					case "iban": this.iban = value; break;
+					case "primaryOwner": this.primaryOwner = value; break;
+					case "dateCreated": this.dateCreated = value; break;
+					case "rate": this.rate = Double.valueOf(value); break;
+                    case "balance": this.balance = Double.valueOf(value); break;
+                }
+            }     	
     }
 
     public String getType() {
@@ -65,6 +95,7 @@ public abstract class BankAccount implements Storable {
     public static String getCountryCode() {
         return COUNTRY_CODE;
     }
+
 
     
 }

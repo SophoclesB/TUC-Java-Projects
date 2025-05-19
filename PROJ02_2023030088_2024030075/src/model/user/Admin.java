@@ -11,6 +11,8 @@ import model.transactions.Transaction;
 	        super(legalName, userName, password);
 	    }
 
+		public Admin() {}
+
 		public String getType(){
 			return "Admin";
 		}
@@ -67,30 +69,5 @@ import model.transactions.Transaction;
 	                '}';
 	    }*/
 
-	    /**
-	     * Marshals the Admin object to a string for storage
-	     * @return A string representation of the Admin
-	     */
-	    @Override
-	    public String marshal() {
-	        return String.join(",",
-					getType(),
-	                getUserName(),
-	                getPassword()
-	        );
-	    }
-
-	    /**
-	     * Unmarshals a string to populate the Admin object
-	     * @param data The string data to unmarshall
-	     */
-	    @Override
-	    public void unmarshal(String data) {
-	        String[] parts = data.split(",");
-	        if (parts.length >= 6) {
-	            setUserName(parts[0]);
-	            // UserType is already set by constructor
-	        }
-	    }
 	}
 

@@ -14,11 +14,49 @@ public abstract class User implements Storable{
 		setUserName(userName);
 		setPassword(password);
 	}
+
+	protected User(){}
 	
+	/**
+	     * Marshals the Admin object to a string for storage
+	     * @return A string representation of the Admin
+	     */
+	    public String marshal() {
+	        return String.join(",",
+					"type:" + getType(),
+	                "legalName:" + getLegalName(),
+					"userName:" + getUserName(),
+	                "password:" +getPassword()
+	        );
+	    }
+
+	    /**
+	     * Unmarshals a string to populate the Admin object
+	     * @param data The string data to unmarshall
+	     */
+	    public void unmarshal(String data) {
+	        String[] parts = data.split(",");
+			for(String pair : parts){
+				String[] kv = pair.split(":");
+				String key = kv[0];
+				String value = kv[1];
+
+				switch(key) {
+					case "type": this.type = value; break;
+					case "legalName": this.legalName = value; break;
+					case "userName": this.userName = value; break;
+					case "password": this.password = value; break;
+					case "vatNumber": 
+                    	if (this instanceof Customer)
+                    	    this.vatNumber = value;
+                    	break;
+				}
+			}
+	    }
+
+
 
 	// ABSTRACT METHODS THAT SUBCLASSES IMPLEMENT
-	public abstract String marshal();
-	public abstract void unmarshal(String data);
 	protected abstract String getType();
 
 	

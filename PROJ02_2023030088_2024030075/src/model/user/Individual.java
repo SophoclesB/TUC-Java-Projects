@@ -12,6 +12,8 @@ public class Individual extends Customer{
         super(legalName, userName, password);
     }
 
+    public Individual(){}
+
     @Override
     public String getType(){
         return "Individual";

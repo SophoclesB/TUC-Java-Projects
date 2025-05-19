@@ -12,6 +12,8 @@ public abstract class Customer extends User{
 		setNewVat();
 	}
 
+	public Customer(){}
+
 	private void setNewVat(){
 		this.vatNumber = generateVAT();
 	}

@@ -8,6 +8,7 @@ public class Company extends Customer {
     private BusinessAccount businessAccount;
     private List<Bill> issuedBills;
 
+    public Company(){}
 
     @Override
     public String getType(){
