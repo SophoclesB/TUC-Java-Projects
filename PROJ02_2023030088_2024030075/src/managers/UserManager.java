@@ -12,18 +12,14 @@ import storage.CSVManager;
 import storage.StorageManager;
 
 public class UserManager {
-    Set<User> userList;
-    CSVManager csvManager = new CSVManager();
+    private User sampleUser;
+    public Set<User> userList;
+    private CSVManager csvManager;
 
-    public static User createUser(String data){
-        String[] parts = data.split(",");
-        String[] kv = parts[0].split(":");
-        switch(kv[1]){
-            case "Admin": return new Admin();
-            case "Individual": return new Individual(); 
-            case "Company": return new Company();
-            default: throw new NullPointerException();
-        }
+    public UserManager(){
+        this.csvManager = new CSVManager();
+        sampleUser = csvManager.createUserFromCSV("data/users/users.csv");
+        csvManager.load(sampleUser, "data/users/users.csv");
     }
 
     

@@ -54,7 +54,7 @@ public class PersonalAccount extends BankAccount {
     }
 
     private String printCoOwners(){
-        Iterator<String> it = coOwner.iterator();
+        Iterator<String> it = coOwners.iterator();
         StringBuffer s = new StringBuffer();
         while(it.hasNext()){
             s.append(",coOwner:"+it.hasNext());
