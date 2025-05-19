@@ -9,48 +9,51 @@ import model.user.Individual;
 
 public class PersonalAccount extends BankAccount {
     private List<String> coOwners;
-    private List<Individual> coOwnerObjects;
-    private int coOwnerCount;
 
+
+    public PersonalAccount(Customer owner, List<Customer> coOwners){
+        super(owner);
+        this.coOwners = new ArrayList<>();
+        for(Customer it : coOwners){ 
+            this.coOwners.add(it.getVAT()); 
+        }
+        recentPersonal = this;
+    }
     public PersonalAccount(Customer owner){
         super(owner);
-        coOwners = new ArrayList<>();
-        coOwnerObjects = new ArrayList<>();
-        this.coOwnerCount = 0;
+        this.coOwners = new ArrayList<>();
+        recentPersonal = this;
+    }
+    public PersonalAccount(){
+        super();
+        this.coOwners = new ArrayList<>();
         recentPersonal = this;
     }
 
     @Override
     public String marshal() {
-	        return String.join(",",
-					"type:" + getType(),
-	                "iban:" + getIban(),
-					"primaryOwner:" + getPrimaryOwner(),
-	                "dateCreated:" + getDateCreated(),
-                    "rate" + getRate(),
-                    "balance" + getBalance(),
-                    printCoOwners()
-	        );
-	    }
+        StringBuffer sb = new StringBuffer();
+	    sb.append(super.marshal());
+        if(coOwners.size()> 0){
+            for(String s : coOwners) {
+                sb.append(",coOwner:" + s);
+            }
+        }
+        return sb.toString();
+	}
 
     @Override
     public void unmarshal(String data){
-        String[] parts = data.split(".");
+        super.unmarshal(data);
+        String[] parts = data.split(",");
         for (String pair : parts){
             String[] kv = pair.split(":");
-				String key = kv[0];
-				String value = kv[1];
-
-                switch(key) {
-					case "type": this.type = value; break;
-					case "iban": this.iban = value; break;
-					case "primaryOwner": this.primaryOwner = value; break;
-					case "dateCreated": this.dateCreated = value; break;
-					case "rate": this.rate = Double.valueOf(value); break;
-                    case "balance": this.balance = Double.valueOf(value); break;
-                    case "coOwner": this.coOwners.add(value); break;
-                }
-            }     	
+			String key = kv[0];
+			String value = kv[1];
+            switch(key) {
+                case "coOwner": this.coOwners.add(value); break;
+            }
+        }     	
     }
 
     private String printCoOwners(){
@@ -60,14 +63,6 @@ public class PersonalAccount extends BankAccount {
             s.append(",coOwner:"+it.hasNext());
         }
         return s.toString();
-    }
-
-    public List<String> getCoOwner() {
-        return coOwners;
-    }
-
-    public int getCoOwnerCount() {
-        return coOwnerCount;
     }
 
     

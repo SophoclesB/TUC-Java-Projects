@@ -5,14 +5,23 @@ import model.bills.Bill;
 import model.accounts.BusinessAccount;
 
 public class Company extends Customer {
-    private BusinessAccount businessAccount;
-    private List<Bill> issuedBills;
-
-
-    public Company() {super();}
+    public Company(String legalName, String userName, String password, String vatNumber) {
+        super(UserType.Company, legalName, userName, password);
+        this.vatNumber = vatNumber;
+    }
+    public Company() {}
 
     @Override
-    public String getType(){
-        return "Company";
+    public UserType getType(){
+        return UserType.Company;
     }
+
+    @Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    if (!super.equals(o)) return false;
+	    Company comp = (Company) o;
+		return true;
+	}
 }

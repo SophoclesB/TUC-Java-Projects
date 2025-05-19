@@ -6,17 +6,23 @@ import model.accounts.*;
 import model.orders.StandingOrder;
 
 public class Individual extends Customer{
-    private List<PersonalAccount> accounts = new ArrayList<>();
-    private List<StandingOrder> standingOrders;
-
-    public Individual(String legalName, String userName, String password){
-        super(legalName, userName, password);
+    public Individual(String legalName, String userName, String password, String vatNumber){
+        super(UserType.Individual, legalName, userName, password);
+        this.vatNumber = vatNumber;
     }
-
-    public Individual(){super();}
+    public Individual(){}
 
     @Override
-    public String getType(){
-        return "Individual";
+    public UserType getType(){
+        return UserType.Individual;
     }
+
+    @Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    if (!super.equals(o)) return false;
+	    Individual ind = (Individual) o;
+		return true;
+	}
 }
