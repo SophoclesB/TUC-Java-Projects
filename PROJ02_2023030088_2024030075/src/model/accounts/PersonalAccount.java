@@ -3,30 +3,34 @@ package model.accounts;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import managers.UserManager;
 import model.user.Customer;
 import model.user.Individual;
+import storage.StorableMap;
 
 public class PersonalAccount extends BankAccount {
-    private List<String> coOwners;
+    private StorableMap<String, Individual> coOwners;
 
 
-    public PersonalAccount(Customer owner, List<Customer> coOwners){
+    public PersonalAccount(Customer owner, List<Individual> coOwners){
         super(owner);
-        this.coOwners = new ArrayList<>();
-        for(Customer it : coOwners){ 
-            this.coOwners.add(it.getVAT()); 
+        this.coOwners = new StorableMap<>();
+        for(Individual it : coOwners){ 
+            this.coOwners.put(it.getVAT(), it); 
         }
         recentPersonal = this;
     }
     public PersonalAccount(Customer owner){
         super(owner);
-        this.coOwners = new ArrayList<>();
+        this.coOwners = new StorableMap<>();
         recentPersonal = this;
     }
     public PersonalAccount(){
         super();
-        this.coOwners = new ArrayList<>();
+        this.coOwners = new StorableMap<>();
         recentPersonal = this;
     }
 
@@ -35,7 +39,7 @@ public class PersonalAccount extends BankAccount {
         StringBuffer sb = new StringBuffer();
 	    sb.append(super.marshal());
         if(coOwners.size()> 0){
-            for(String s : coOwners) {
+            for(String s : coOwners.keySet()){ // This is going to be the IBAN 
                 sb.append(",coOwner:" + s);
             }
         }
@@ -51,13 +55,13 @@ public class PersonalAccount extends BankAccount {
 			String key = kv[0];
 			String value = kv[1];
             switch(key) {
-                case "coOwner": this.coOwners.add(value); break;
+                case "coOwner": this.coOwners.put(value, (Individual)UserManager.getInstance().getUserMap().get(value)); break;
             }
         }     	
     }
 
     private String printCoOwners(){
-        Iterator<String> it = coOwners.iterator();
+        Iterator<String> it = coOwners.keySet().iterator();
         StringBuffer s = new StringBuffer();
         while(it.hasNext()){
             s.append(",coOwner:"+it.hasNext());
