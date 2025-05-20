@@ -1,5 +1,10 @@
 package model.orders;
 
-public abstract class StandingOrder {
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import storage.Storable;
+
+public abstract class StandingOrder implements Storable{
+    public enum OrderType
 
 }
