@@ -11,7 +11,7 @@ public abstract class BankAccount implements Storable {
 
     protected AccountType type;
     protected String iban;
-    protected String primaryOwner;
+    protected String primaryOwner; //*kane primaryowner account */
     protected LocalDate dateCreated;
     protected double rate;
     protected double balance;
