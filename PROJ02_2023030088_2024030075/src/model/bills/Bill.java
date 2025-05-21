@@ -10,7 +10,7 @@ public class Bill implements Storable{
     private String billNumber;
     private String issuer;
     private String customer;
-    private double money;
+    private float amount;
     private LocalDate issueDate;
     private LocalDate dueDate;
     private boolean status;
@@ -25,7 +25,7 @@ public class Bill implements Storable{
 	                "billNumber:" + getBillNumber(),
 					"issuer:" + getIssuer(),
 	                "customer:" + getCustomer(),
-                    "amount:" + getMoney(),
+                    "amount:" + getAmount(),
                     "issueDate:" + getIssueDate(),
                     "dueDate:" + getDueDate()
 	        );
@@ -43,7 +43,7 @@ public class Bill implements Storable{
                 case "billNumber"   :this.billNumber = value;
                 case "issuer"       :this.issuer = value;
                 case "customer"     :this.customer = value;
-                case "amount"       :this.money = Double.parseDouble(value);
+                case "amount"       :this.amount = Float.parseFloat(value);
                 case "issueDate"    :this.issueDate = LocalDate.parse(value);
                 case "dueDate"      :this.dueDate = LocalDate.parse(value);
                 case "paid"         :this.status = Boolean.parseBoolean(value);
@@ -51,12 +51,13 @@ public class Bill implements Storable{
 		}
     }
 
-    private String getRf() { return this.billRf; }
+    public String getRf() { return billRf; }
     public String getBillNumber() { return billNumber; }
     public String getIssuer() { return issuer; }
     public String getCustomer() { return customer; }
-    public double getMoney() { return money; }
+    public float getAmount() { return amount; }
     public LocalDate getIssueDate() { return issueDate; }
     public LocalDate getDueDate() { return dueDate; }
-    public boolean isStatus() { return status; }
+    public boolean isStatus() { return this.status; }
+    public void setStatus(boolean status) { this.status = status; }
 }

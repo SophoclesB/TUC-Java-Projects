@@ -12,7 +12,7 @@ public abstract class Customer extends User{
 		super(type, legalName, userName, password);
 	}
 
-	public String getVAT(){ return vatNumber; }
+	public String getVAT() { return vatNumber; }
 	public abstract UserType getType();
 
 	@Override
