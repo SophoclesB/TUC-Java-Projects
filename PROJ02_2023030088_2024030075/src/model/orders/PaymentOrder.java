@@ -77,13 +77,13 @@ public class PaymentOrder extends StandingOrder{
         TransactionManager.getInstance().executeTransaction(trans);
         BillManager.getInstance().payBill(bill);
 
-        float underArmour = AccountManager.getInstance().getAccountMap().get(chargeAccount).getBalance();
+        double underArmour = AccountManager.getInstance().getAccountMap().get(chargeAccount).getBalance(); // underArmour = newBalance
 
         
     }
 
     public String getPaymentCode() {return paymentCode;}
-    public float getMaxAmount() {return maxAmount;}
+    public double getMaxAmount() {return maxAmount;}
     public BankAccount getChargeAccount() {return chargeAccount;}
 
     
