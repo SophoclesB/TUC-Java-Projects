@@ -51,7 +51,7 @@ public class PaymentOrder extends StandingOrder{
                 case "maxAmount":       this.maxAmount = Float.parseFloat(value); break;
                 case "startDate":       this.startDate = LocalDate.parse(value); break;
                 case "endDate":         this.endDate = LocalDate.parse(value); break;
-                case "chargeAccount":   this.chargeAccount = AccountManager.getInstance().getAccounts().get(value); break;
+                case "chargeAccount":   this.chargeAccount = AccountManager.getInstance().getAccountMap().get(value); break;
             }
         }
     }

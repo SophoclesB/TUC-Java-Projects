@@ -1,6 +1,6 @@
 package storage;
 
-import java.beans.Statement;
+import statements.Statement;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,11 +53,10 @@ public class StorableMap <K, V extends Storable> implements Storable, Map<K, V>{
                 default                 : System.out.println("Invalid type: " + kv[1]); return;
             }
             s.unmarshal(line);
-            if(s instanceof Customer){
+            if(s instanceof Customer)
                 storageMap.put((K) ((Customer)s).getVAT(), (V) s);
-            if(s instanceof BankAccount){
+            if(s instanceof BankAccount)
                 storageMap.put((K) ((BankAccount)s).getIban(), (V) s);
-            }
         }
     }
 

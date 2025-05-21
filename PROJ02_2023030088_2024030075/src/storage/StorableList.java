@@ -1,6 +1,6 @@
 package storage;
 
-import java.beans.Statement;
+import statements.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
