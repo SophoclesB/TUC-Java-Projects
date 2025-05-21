@@ -2,6 +2,7 @@ package model.accounts;
 
 import java.time.LocalDate;
 
+import managers.UserManager;
 import model.user.*;
 import model.user.User.UserType;
 import storage.Storable;
@@ -11,7 +12,7 @@ public abstract class BankAccount implements Storable {
 
     protected AccountType type;
     protected String iban;
-    protected String primaryOwner; //*kane primaryowner account */
+    protected Customer primaryOwner; //*kane primaryowner account */
     protected LocalDate dateCreated;
     protected double rate;
     protected double balance;
@@ -21,7 +22,7 @@ public abstract class BankAccount implements Storable {
     protected static PersonalAccount recentPersonal;
 
     public BankAccount(Customer owner){
-        this.primaryOwner = owner.getVAT();
+        this.primaryOwner = owner;
         this.balance = 0.00f;
         this.rate = 0.00f;
         this.iban = generateIban(owner);
@@ -50,7 +51,7 @@ public abstract class BankAccount implements Storable {
                 switch(key) {
 					case "type": this.type = AccountType.valueOf(value); break;
 					case "iban": this.iban = value; break;
-					case "primaryOwner": this.primaryOwner = value; break;
+					case "primaryOwner": this.primaryOwner = (Individual)UserManager.getInstance().getCustomerMap().get(value); break;
 					case "dateCreated": this.dateCreated = LocalDate.parse(value); break;
 					case "rate": this.rate = Double.valueOf(value); break;
                     case "balance": this.balance = Double.valueOf(value); break;
@@ -85,10 +86,11 @@ public abstract class BankAccount implements Storable {
     }
     
     public void applyDailyInterest() { balance += balance * (rate/365); }
+    public void applyMonthlyFees() { balance -= 5.00; }
 
     public String getIban() { return iban; }
-    public String getPrimaryOwner() { return primaryOwner; }
-    public void setPrimaryOwner(String primaryOwner) { this.primaryOwner = primaryOwner; }
+    public Customer getPrimaryOwner() { return primaryOwner; }
+    public void setPrimaryOwner(Customer primaryOwner) { this.primaryOwner = primaryOwner; }
     private LocalDate getDateCreated(){ return this.dateCreated; }
     public double getRate() { return rate; }
     public double getBalance() { return balance; }

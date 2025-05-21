@@ -55,7 +55,7 @@ public class PersonalAccount extends BankAccount {
 			String key = kv[0];
 			String value = kv[1];
             switch(key) {
-                case "coOwner": this.coOwners.put(value, (Individual)UserManager.getInstance().getUserMap().get(value)); break;
+                case "coOwner": this.coOwners.put(value, (Individual)UserManager.getInstance().getCustomerMap().get(value)); break;
             }
         }     	
     }
