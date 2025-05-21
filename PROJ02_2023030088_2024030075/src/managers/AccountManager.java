@@ -13,6 +13,10 @@ public class AccountManager {
 
 
     public static AccountManager getInstance() { return INSTANCE; }
-
+    
+    
+    public StorableMap<String, BankAccount> getAccounts(){
+        return accountMap;
+    }
     
 }

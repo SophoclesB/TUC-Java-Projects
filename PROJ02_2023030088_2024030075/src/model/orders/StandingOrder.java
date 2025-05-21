@@ -2,15 +2,10 @@ package model.orders;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-<<<<<<< HEAD
-=======
 import storage.Storable;
 
-public abstract class StandingOrder implements Storable{
-    public enum OrderType
->>>>>>> 766b75e8eeed2bb0f0e9805143f0606dc3c4720f
-
 import storage.Storable;
+
 
 public abstract class StandingOrder implements Storable {
     public enum OrderType {TransferOrder, PaymentOrder}
