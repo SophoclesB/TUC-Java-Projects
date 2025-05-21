@@ -1,5 +1,6 @@
 package model.transactions;
 
+import managers.AccountManager;
 import model.accounts.BankAccount;
 
 public class Withdrawal extends Transaction{
@@ -13,7 +14,11 @@ public class Withdrawal extends Transaction{
     }
 
     @Override
-    public void execute(){
-
+    public void execute() {
+        var acc = AccountManager.getInstance()
+            .getAccountsForVAT(transactorVat).stream()
+            .filter(a -> a.getIban().equals(chargeAccount.getIban()))
+            .findFirst();
+        acc.ifPresent(a -> a.setBalance(a.getBalance() - money));
     }
 }

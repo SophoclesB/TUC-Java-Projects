@@ -95,4 +95,5 @@ public abstract class BankAccount implements Storable {
     public double getRate() { return rate; }
     public double getBalance() { return balance; }
     public static String getCountryCode() { return COUNTRY_CODE; }
+    public void setBalance(double balance) { this.balance = balance; }
 }

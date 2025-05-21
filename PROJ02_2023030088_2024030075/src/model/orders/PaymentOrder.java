@@ -58,8 +58,8 @@ public class PaymentOrder extends StandingOrder{
 
     @Override
     public void process(LocalDate date) throws Exception {
-        Bill bill = BillManager.getInstance().getIssued().stream()
-        .filter(bill -> bill.getRf().equals(paymentCode) && !bill.isStatus())
+        Bill bill = BillManager.getInstance().getIssuedBills().stream()
+        .filter(b -> b.getRf().equals(paymentCode) && !b.isStatus())
         .findFirst().orElse(null);
 
         if (bill == null) return;

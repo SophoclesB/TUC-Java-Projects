@@ -17,6 +17,7 @@ import storage.Storable;
 import storage.StorableList;
 import storage.StorableMap;
 import storage.StorageManager;
+import utils.RandomString;
 
 public class UserManager {
     private StorableMap<String, Customer> customerMap = new StorableMap<>();
@@ -103,6 +104,13 @@ public class UserManager {
                 }
             }
             return vatNum;
+        }
+    }
+
+    public void printAllUsers() {
+        System.out.println("All Users:");
+        for (User user : userList) {
+            System.out.println(user.marshal());
         }
     }
 

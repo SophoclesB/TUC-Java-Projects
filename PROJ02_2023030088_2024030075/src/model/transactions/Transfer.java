@@ -1,5 +1,6 @@
 package model.transactions;
 
+import managers.AccountManager;
 import model.accounts.BankAccount;
 
 public class Transfer extends Transaction{
@@ -16,6 +17,14 @@ public class Transfer extends Transaction{
 
     @Override
     public void execute() {
-
+        var mgr = AccountManager.getInstance();
+        mgr.getAccountsForVAT(transactorVat).stream()
+            .filter(a -> a.getIban().equals(chargeAccount.getIban()))
+            .findFirst()
+            .ifPresent(a -> a.setBalance(a.getBalance() - amount));
+        mgr.getAccountsForVAT(transactorVat).stream()
+            .filter(a -> a.getIban().equals(creditAccount.getIban()))
+            .findFirst()
+            .ifPresent(a -> a.setBalance(a.getBalance() + amount));
     }
 }

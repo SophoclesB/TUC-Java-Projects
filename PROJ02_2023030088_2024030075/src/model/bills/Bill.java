@@ -59,4 +59,5 @@ public class Bill implements Storable{
     public LocalDate getIssueDate() { return issueDate; }
     public LocalDate getDueDate() { return dueDate; }
     public boolean isStatus() { return this.status; }
+    public void setStatus(boolean status) { this.status = status; }
 }

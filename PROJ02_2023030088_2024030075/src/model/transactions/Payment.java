@@ -1,5 +1,9 @@
 package model.transactions;
 
+import java.util.List;
+
+import managers.BillManager;
+import model.bills.Bill;
 
 public class Payment extends Transaction{
     private String billRf;
@@ -12,7 +16,14 @@ public class Payment extends Transaction{
     }
 
     @Override
-    public void execute(){
-
+    public void execute() {
+        BillManager mgr = BillManager.getInstance();
+        List<Bill> issued = mgr.getIssuedBills();
+        Bill b = issued.stream()
+            .filter(x -> x.getRf().equals(billRf))
+            .findFirst().orElse(null);
+        if (b != null) {
+            mgr.payBill(b);
+        }
     }
 }

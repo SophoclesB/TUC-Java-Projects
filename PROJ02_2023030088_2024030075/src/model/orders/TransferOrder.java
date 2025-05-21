@@ -3,6 +3,7 @@ package model.orders;
 import java.time.LocalDate;
 import java.util.UUID;
 
+import managers.AccountManager;
 import managers.TransactionManager;
 import model.accounts.BankAccount;
 import model.transactions.Transfer;
@@ -51,8 +52,8 @@ public class TransferOrder extends StandingOrder{
                 case "amount"               :this.amount = Float.parseFloat(value); break;
                 case "startDate"            :this.startDate = LocalDate.parse(value); break;
                 case "endDate"              :this.endDate = LocalDate.parse(value); break;
-                case "chargeAccount"        :this.chargeAccount = accountMap.get(value).getIban(); break;
-                case "creditAccount"        :this.creditAccount = accountMap.get(value).getIban(); break;
+                case "chargeAccount"        :this.chargeAccount = AccountManager.getInstance().getAccountMap().get(value); break;
+                case "creditAccount"        :this.creditAccount = AccountManager.getInstance().getAccountMap().get(value); break;
                 case "frequencyInMonths"    :this.frequencyInMonths = Integer.parseInt(value); break;
                 case "dayOfMonth"           :this.dayOfMonth = Integer.parseInt(value); break;
 			}
