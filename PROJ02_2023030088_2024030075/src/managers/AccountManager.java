@@ -20,6 +20,7 @@ public class AccountManager {
 
 
     public static AccountManager getInstance() { return INSTANCE; }
+<<<<<<< HEAD
 
     public void saveAccounts(String filePath, boolean append) {
         CSVManager.INSTANCE.save(accountMap, filePath + "accounts/accounts.csv", append);
@@ -89,4 +90,12 @@ public class AccountManager {
     public StorableMap<String, BankAccount> getAccountMap() {
         return accountMap;
     }
+=======
+    
+    
+    public StorableMap<String, BankAccount> getAccounts(){
+        return accountMap;
+    }
+    
+>>>>>>> 584276330fd0c1a3eae6681d88b8fff94a262184
 }
