@@ -42,9 +42,9 @@ public abstract class BankAccount implements Storable {
 	    }
 
     public void unmarshal(String data){
-        String[] parts = data.split(".");
+        String[] parts = data.split(",");
         for (String pair : parts){
-            String[] kv = pair.split(":");
+            String[] kv = pair.split(":", 2);
 				String key = kv[0];
 				String value = kv[1];
 

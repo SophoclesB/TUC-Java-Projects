@@ -7,8 +7,8 @@ public class Deposit extends Transaction{
     private BankAccount creditAccount;
     private float amount;
 
-    public Deposit(String code, String transactor, String reason, BankAccount creditAccount, float amount){
-        super(TransactionType.Deposit, code, transactor, reason);
+    public Deposit(String code, String transactor, String description, String timeStamp, BankAccount creditAccount, float amount){
+        super(TransactionType.Deposit, code, transactor, description, timeStamp);
         this.creditAccount = creditAccount;
         this.amount = amount;
     }

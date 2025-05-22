@@ -66,13 +66,7 @@ public class PaymentOrder extends StandingOrder{
 
         if (bill.getAmount() > maxAmount) return;
 
-        Payment trans = new Payment(
-            UUID.randomUUID().toString(),
-            customerVat,
-            date.toString(),
-            bill.getRf(),
-            bill.getAmount()
-        );
+        Payment trans = new Payment(UUID.randomUUID().toString(), customerVat, null,  date.toString(), bill.getRf(), bill.getAmount());
 
         TransactionManager.getInstance().executeTransaction(trans);
         BillManager.getInstance().payBill(bill);

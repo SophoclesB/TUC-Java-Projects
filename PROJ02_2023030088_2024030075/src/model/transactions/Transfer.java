@@ -8,8 +8,8 @@ public class Transfer extends Transaction{
     private BankAccount creditAccount;
     private final float amount;
 
-    public Transfer(String code, String transactor, String reason, BankAccount chargeAccount, BankAccount creditAccount, float amount){
-        super(TransactionType.Transfer, code, transactor, reason);
+    public Transfer(String code, String transactor, String description, String timeStamp, BankAccount chargeAccount, BankAccount creditAccount, float amount){
+        super(TransactionType.Transfer, code, transactor, description, timeStamp);
         this.chargeAccount = chargeAccount;
         this.creditAccount = creditAccount;
         this.amount = amount;

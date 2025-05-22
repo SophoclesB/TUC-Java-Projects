@@ -67,6 +67,7 @@ public class TransferOrder extends StandingOrder{
         Transfer trans = new Transfer(
             UUID.randomUUID().toString(),
             customerVat,
+            null,
             date.toString(),
             chargeAccount,
             creditAccount,
