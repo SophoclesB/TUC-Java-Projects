@@ -20,7 +20,7 @@ public class Bill implements Storable{
     @Override
     public String marshal() {
         return String.join(",",
-					"type:Bill" + 
+					"type:Bill", 
                     "paymentCode:" + getRf(),
 	                "billNumber:" + getBillNumber(),
 					"issuer:" + getIssuer(),
@@ -31,11 +31,16 @@ public class Bill implements Storable{
 	        );
     }
 
+    /* 
+
     @Override
     public void unmarshal(String data) {
         String[] parts = data.split(",");
 		for(String pair : parts){
-			String[] kv = pair.split(":");
+			String[] kv = pair.split(":", 2);
+            if(kv.length < 2) {
+                continue;
+            }
 			String key = kv[0];
 			String value = kv[1];
 			switch(key) {
@@ -49,6 +54,27 @@ public class Bill implements Storable{
                 case "paid"         :this.status = Boolean.parseBoolean(value);
 			}
 		}
+    }
+
+    */
+
+    @Override
+    public void unmarshal(String data) {
+        String[] fields = data.split(",");
+        for (String field : fields) {
+            String[] kv = field.split(":");
+            if (kv.length < 2) continue;
+            switch (kv[0]) {
+                case "paymentCode" -> billRf = kv[1];
+                case "billNumber"  -> billNumber = kv[1];
+                case "issuer"      -> issuer = kv[1];
+                case "customer"    -> customer = kv[1];
+                case "amount"      -> amount = Float.parseFloat(kv[1]);
+                case "issueDate"   -> issueDate = LocalDate.parse(kv[1].trim());
+                case "dueDate"     -> dueDate = LocalDate.parse(kv[1].trim());
+                case "paid"        -> status = Boolean.parseBoolean(kv[1]);
+            }
+        }
     }
 
     public String getRf() { return billRf; }

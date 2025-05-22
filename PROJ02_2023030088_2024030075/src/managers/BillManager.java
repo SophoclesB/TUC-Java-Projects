@@ -184,4 +184,8 @@ public class BillManager {
         loadIssued(filePath, new StorableList<>());
         loadPaid(filePath, new StorableList<>());
     }
+
+    public StorableMap<LocalDate, StorableList<Bill>> getBillMap() {
+        return billMap;
+    }
 }

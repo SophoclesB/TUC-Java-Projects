@@ -49,11 +49,8 @@ public class UserManager {
 
     public void loadUser(Storable s) {
         User user = (User) s;
-        if(s instanceof User) {
-            userList.add(user);
-            return;
-        }
-        if(s instanceof Customer) {
+        userList.add(user);
+        if(s instanceof Individual || s instanceof Company) {
             customerMap.put(((Customer) user).getVAT() , (Customer) user);
         }
     }

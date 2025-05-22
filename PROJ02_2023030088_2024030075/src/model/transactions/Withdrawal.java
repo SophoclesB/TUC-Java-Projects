@@ -7,8 +7,8 @@ public class Withdrawal extends Transaction{
     private BankAccount chargeAccount;
     private float money;
 
-    public Withdrawal(String code, String transactor, String reason, BankAccount chargeAccount, float money){
-        super(TransactionType.Withdrawal, code, transactor, reason);
+    public Withdrawal(String code, String transactor, String description, String timeStamp, BankAccount chargeAccount, float money){
+        super(TransactionType.Withdrawal, code, transactor, description, timeStamp);
         this.chargeAccount = chargeAccount;
         this.money = money;
     }

@@ -1,12 +1,6 @@
 package storage;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.file.Files;
 
 import model.user.Admin;
@@ -16,10 +10,6 @@ import model.user.User;
 
 public class CSVManager implements StorageManager {
     public static final CSVManager INSTANCE = new CSVManager();
-    private static int loadCount;
-    private static int saveCount;
-    private String data;
-
     public CSVManager(){
     }
 

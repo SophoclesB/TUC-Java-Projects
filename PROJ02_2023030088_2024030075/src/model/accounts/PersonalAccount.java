@@ -51,7 +51,7 @@ public class PersonalAccount extends BankAccount {
         super.unmarshal(data);
         String[] parts = data.split(",");
         for (String pair : parts){
-            String[] kv = pair.split(":");
+            String[] kv = pair.split(":", 2);
 			String key = kv[0];
 			String value = kv[1];
             switch(key) {
